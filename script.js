@@ -3,7 +3,7 @@
 
 // for generating the bubbles we are using for loop 
 
-var timer=6;
+var timer=3;
 var hitrn;
 var score=0;
 function makeBubble(){
@@ -25,9 +25,7 @@ function runTimer(){
         }
         else{
             clearInterval(timerint);
-            makeBubble(
-                document.querySelector("#pbtm").innerHTML=`<h3> Game Over </h3>`
-            )
+            document.querySelector("#pbtm").innerHTML= `<h1> Game Over </h1>`;
         }
         
     },1000);
@@ -36,7 +34,7 @@ function runTimer(){
 function getNewHit(){
     hitrn=Math.floor(Math.random()*10);
     // query selector se html ko add kro 
-    document.querySelector("#hitval").innerHTML=hitrn
+    document.querySelector("#hitval").innerHTML=hitrn;
 }
 
 // function for increasing score 
@@ -45,15 +43,20 @@ function increaseScore(){
     document.querySelector("#score").innerHTML=score;
 }
 
-makeBubble();
-getNewHit();
-runTimer();
-increaseScore();
-
 // concept :-- event bubbling in javascript :
 // --> 
 
 document.querySelector("#pbtm")
-.addEventListener(function name(details) {
-    alert("chal raha hai");
-})
+.addEventListener("click", function(details){
+    var clickednum=Number(details.target.textContent);
+    if(clickednum===hitrn){
+        increaseScore();
+        makeBubble();
+        getNewHit();
+
+    }
+});
+
+makeBubble();
+runTimer();
+getNewHit();
