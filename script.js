@@ -3,7 +3,7 @@
 
 // for generating the bubbles we are using for loop 
 
-var timer=3;
+var timer=30;
 var hitrn;
 var score=0;
 function makeBubble(){
